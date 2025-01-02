@@ -1,0 +1,191 @@
+
+#para{
+    color: white;
+    margin-left: 5vh;
+    padding-top: 5vh;
+}
+
+.navbar{
+  color: rgb(4, 44, 44);
+  display: flex;
+justify-content:flex-end;
+padding-right: 15vh;
+  position: fixed;
+  margin-bottom: 5vh;
+  width: 90%;
+  gap: 10vh;
+  list-style: none;
+  cursor: pointer;
+  font-size: larger;
+  background: #555;
+  height: 5vh;
+}
+
+  .navbar li a {
+    text-decoration: none;
+    padding-left: 5vh;
+    padding-bottom: 5vh;
+  }
+  
+
+.home:hover{
+  color: rgb(235, 50, 111);
+}
+.about:hover:hover{
+  color: rgb(235, 50, 111);
+}
+.products:hover{
+  color: rgb(235, 50, 111);
+}
+.login{
+  color: aqua;
+  text-decoration: none;
+}
+.login:hover{
+  color: rgb(235, 50, 111);
+
+}
+.crt{
+  color: aqua;
+  font-size:5vh;
+  padding-top: 16vh;
+  margin-left: 5vh;
+  width: 100%;
+  width: 100%;
+}
+
+body {
+   font-family: Arial, sans-serif;
+   /* text-align: center; */
+   /* margin: 20px; */
+   background-color: rgb(8, 23, 51);
+   margin: 0;
+   padding: 0;
+ }
+ .box {
+   margin-bottom: 20px;
+   text-align: center;
+ }
+ input[type="text"] {
+   padding: 10px;
+   width: 300px;
+   margin-right: 10px;
+ }
+ input[type="submit"] {
+   height: 6vh;
+   cursor: pointer;
+ }
+ table {
+   width: 100%;
+   border-collapse: collapse;
+   margin-bottom: 30px;
+   margin-left: 4vh;
+  
+   
+ }
+ td:hover{
+  background-color: #1e0e42;
+ }
+ th, td {
+   border: 1px solid #1e0e42;
+   text-align: center;
+   padding: 10px;
+  
+   
+ }
+ th {
+   font-weight: bold;
+   margin: 0;
+   padding: 0;
+ }
+ img{
+  height: 7vh;
+  display: flex;
+  grid-row: auto;
+  border-radius: 50%;
+  width: 10vh;
+  border: 2px solid rgb(118, 138, 137);
+ 
+ }
+ #callname{
+color: white;
+gap: 3vh;
+display:flex;
+align-items: center;
+cursor: pointer;
+
+ } 
+ #callname:hover{
+  background-color: #1e0e42;
+ }
+ #no{
+  color: white;
+ }
+ #str2{
+  color: white;
+ }
+ #callprice{
+  color: white;
+ }
+ #str{
+  color: white;
+ }
+ #str1{
+  color: white;
+ }
+ #details{
+  color: white;
+  
+ }
+#hover{
+  color: rgb(233, 231, 231);
+   text-align: center; 
+   cursor: pointer;
+}
+#hover:hover{
+  color: aqua;
+}
+#work{
+  padding: 0;
+  text-align: center;
+  color: white;
+  
+  
+}
+#work:hover{
+  color: aqua;
+}
+#ps{
+  display: flex;
+  margin-left: 15vh;
+ color: rgb(211, 214, 214);
+}
+#sub{
+  color: blue;
+  font-size: larger;
+  background-color: aqua;
+}
+#searchInput{
+  background-color: aqua;
+}
+
+.products{
+  color:aqua;
+}
+.about{
+  color:aqua;
+}
+.home{
+  color:aqua;
+}
+
+#medile{
+   width: 50vh; 
+   height: 50vh;
+   margin-top: 5vh;
+}
+#details{
+  /* background-color: rgb(225, 65, 73); */
+  border-bottom-style:ridge;
+  padding-top: 4vh;
+}

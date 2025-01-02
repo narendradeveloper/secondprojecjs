@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div id="home">
+      <ul class="navbar">
+        <li><a href="#home" class="home">Home</a></li>
+<li><a href="#work" class="about">About</a></li>
+        <li><a href="#products" class="products">Products</a></li>
+        <li><a href="login.html" class="login">Login</a></li>
+      </ul>
+      <div class="crt">Cryptocurrency</div>
+      
+        
+      <p id="para">
+        This web application serves as a comprehensive resource for
+        cryptocurrency enthusiasts, providing real-time data on various
+        <br />digital currencies. Users can explore a wide range of
+        cryptocurrencies, complete with details such as price, market cap,
+        <br />and trading volume. The app features a user-friendly interface,
+        making it easy to search for specific cryptocurrencies and view
+        <br />their performance over time. Additionally, it offers insights into
+        top-performing assets and historical OHLC data for in-depth analysis.
+        
+      </p>
+    
+    </header>
+    <div class="box">
+      <input type="text"  id="searchInput" placeholder="Search..." oninput="serch()">
+      <input  type="submit" id="sub" value="Sumbit" />
+    </div>
+    <table id="cryptoTable">
+      <thead>
+        <p id="tr"></p>
+        <table id="crypto-table">
+            <thead>
+                <tr id="details">
+                  <th>#</th>
+                    <th>Name</th>
+                    <th>Lest Price</th>
+                    <th>24h%</th>
+                    <th>Market Cap</th>
+                    <th>Last 7 Days</th>
+                </tr>
+            </thead>
+            <tbody id="crypto-body">
+            </tbody>
+        </table>    
+      <tbody  id="id"> 
+      </tbody> 
+    </table>
+    </div>
+    <div id="heder">
+    </div>
+    <script>
+      let cryptos =[];
+         async function api() {
+            let tbody = document.getElementById("crypto-body");
+            
+            let url = await fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin,ethereum,ripple,litecoin,cardano,polkadot,dogecoin,solana,shiba-inu,binancecoin,avalanche,tron,chainlink,uniswap,stellar,monero,vechain,tezos,theta,cosmos,filecoin,algorand,aave,elrond,zcash,compound,ethereum-classic,theta-fuel,enjincoin,hedera-hashgraph,thorchain,quant,radix,ecomi,flow,yearn-finance,fantom,harmony,celsius,near,ravencoin,kucoin-shares,decentraland,sandbox,axie-infinity,gala,stepn,holo,arweave,terra-luna-v2,unus-sed-leo,bittorrent,moonriver&price_change_percentage=1h,24h,7d");
+            let data = await url.json();
+            cryptos =data;
+
+            renderRows(data);
+         }
+            function renderRows(data){
+              let tbody = document.getElementById("crypto-body");
+              tbody.innerHTML =" ";
+            
+            
+            
+            data.map((a,b) => {
+                let row = document.createElement("tr");
+                let no=document.createElement("td");
+                no.id="no"
+                no.innerHTML = b +1;
+                row.appendChild(no)
+                
+
+                
+                let callname = document.createElement("td");
+                callname.id="callname"
+                callname.innerHTML = a.name +" "; 
+                
+                let image=document.createElement("img");
+                image.src=a.image;
+                image.alt=`${a.image}`;
+                callname.appendChild(image);
+                row.appendChild(callname)
+
+                
+                let callprice= document.createElement("td");
+              callprice.id="callprice"
+                callprice.innerHTML= a.price_change_percentage_24h_in_currency; 
+                row.appendChild(callprice);
+
+                let str=document.createElement("td")
+               str.id="str"
+               let low_24h=a.low_24h;
+                str.innerHTML=`${a.low_24h.toFixed(2)}%`;
+                if(low_24h < 10 ){
+                  str.style.color="red";
+                }
+                else if(low_24h >10){
+                  str.style.color="green"
+                }
+                else{
+                  str.style.color="gray"
+                }
+                row.appendChild(str);
+
+                let str1=document.createElement("td");
+                str1.id="str1"
+                str1.innerHTML=a.market_cap;
+                row.appendChild(str1);
+
+                let str2=document.createElement("td");
+                str2.id="str2"
+                str2.innerHTML=a.price_change_percentage_7d_in_currency;
+                row.appendChild(str2)
+
+              
+
+                tbody.appendChild(row);
+            });
+          }
+        
+        function serch(){
+          const searchInput= document.getElementById("searchInput").value.toLowerCase();
+          if (searchInput.trim() === "") {
+        renderRows(cryptos);
+        return;
+      }
+          const filteredData = cryptos.filter((crypto) =>
+            crypto.name.toLowerCase().includes(searchInput)
+          )
+          renderRows(filteredData )
+        }
+     
+        api();
+        
+        
+
+      </script>
+      
+      <div >
+        
+     <!-- <div id="about"> -->
+    <h1 id="work" style="margin-top: 15vh;">How It Work</h1>
+<p style="color: rgb(133, 142, 150); text-align: center; font-size: larger;" > A blockchain is a distributed and immutable ledger that records all </p>
+  <p style="color: rgb(133, 142, 150); text-align: center; font-size: larger; margin-bottom:2vh"> transactions across a network of computers.</p>
+<div style="display: flex; gap: 15vh; margin-left: 4vh;">
+
+  <div id="medile">
+    <img src="./arrow.jpeg" style="margin-left: 20vh; margin-top: 3vh; border-radius: 20vh;"></img>
+  <h1 id="hover">Create</h1>
+  <p style="text-align: center;color: rgb(133, 142, 150) ;text-align: center; margin-left: 2vh; font-size: larger;" >There are three main methods to create a cryptocurrency constructing a unique blockchain, altering an existing blockchain, or generating a token on an existing blockchain.</p>
+</div>
+
+<div style="  width: 50vh; height: 50vh;margin-top: 5vh;">
+  <img src="./login.jpg" style="margin-left: 20vh; margin-top: 3vh; border-radius: 20vh;"></img>
+<h1 id="hover">Login</h1>
+<p style="text-align: center;color: rgb(133, 142, 150) ;text-align: center; margin-left: 2vh; font-size: larger;" > Some platforms are more secure than others, and some newer coins could be a higher scam risk than those more established</p>
+  </div>
+
+<div style="  width: 50vh; height: 50vh;margin-top: 5vh;">
+  <img src="./smanagement.webp" style="margin-left: 20vh; margin-top: 3vh; border-radius: 20vh;"></img>
+<h1 id="hover">Manage</h1>
+<p style="text-align: center;color: rgb(133, 142, 150) ;text-align: center; margin-left: 2vh; font-size: larger;" >Self-custody wallets. A self-custody wallet, like Coinbase Wallet, puts you in complete control of your crypto. Non-custodial wallets don't rely on a third party .</p>
+</div>
+</div>
+
+
+<div id="products" style="display: flex; gap: 10vh; height: 50vh;margin-left: 5vh; width: 100%; margin-top: 20vh;">
+<div id="product">
+  
+  <h1 style="color: white;">Cryptex</h1>
+  <h2 style="color: white;">Let's Talk !</h2>
+  <p style="color: rgb(146, 139, 139);">+91 9912571708</p>
+  <p style="color: rgb(146, 139, 139);">narendra45sn@Gmail.com</p>
+  <p style="color: rgb(146, 139, 139);">Cecilia Chapman 711-2880 Nulla St. Mankato</p>
+  <P style="color: rgb(146, 139, 139);">Mississippi 96522</P>
+</div>
+<div >
+  <P style="color: white; margin-left: 6vh;" >Products</P>
+  <ul style="color: rgb(211, 214, 214); list-style: none; line-height: 5vh;">
+  <li>Spot</li>
+  <li>Inverse Perpetual</li>
+  <li>USDT Perpetual</li>
+  <li>Exchange</li>
+  <li>Launchpad</li>
+  <li>Binance Pay</li>
+</ul>
+</div>
+<div >
+  <P style="color: white; margin-left: 6vh;" >Services</P>
+  <ul style="color: rgb(211, 214, 214); list-style: none; line-height: 5vh;">
+  <li>Buy Crypto</li>
+  <li>Markets</li>
+  <li>Tranding Fee</li>
+  <li>Affiliate Program</li>
+  <li>Referral Program</li>
+  <li>API</li>
+</ul>
+</div>
+<div >
+  <P style="color: white; margin-left: 6vh;" >Support</P>
+  <ul style="color: rgb(211, 214, 214); list-style: none; line-height: 5vh;">
+  <li>Bybit Learn</li>
+  <li>Help Center</li>
+  <li>User Feedback</li>
+  <li>Submit a request</li>
+  <li>API Documentation</li>
+  <li>Trading Rules</li>
+</ul>
+</div>
+<div >
+  <P style="color: white; padding: 0;margin-left: 5vh;" > Us</P>
+  <ul style="color: rgb(211, 214, 214); list-style: none; line-height: 5vh; padding: 0;">
+  <li>bout Bybit</li>
+  <li>Authenticity Check</li>
+  <li>Careers</li>
+  <li>Business Contacts</li>
+  <li>Blog</li>
+</ul>
+</div>
+</div>
+
+<div style="background-color: rgb(8, 23, 51);; display: flex; gap: 1vh;">
+<p id="ps">© 2022 Cryptex All Rights Reserved by</p>
+<p style="color: rgb(33, 29, 236); font-size:medium;">Narendra</p>
+</div> 
+
+  </body>
+</html>
+
+
